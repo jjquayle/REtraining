@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Auditory Pathways – LSLS Cert AVT & AVEd Training</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2d5e;
+    --teal: #1b7f8e;
+    --teal-light: #2a9aac;
+    --teal-pale: #e8f5f7;
+    --orange: #f39120;
+    --orange-light: #fdf3e3;
+    --white: #ffffff;
+    --off-white: #f8fafb;
+    --grey-light: #eef2f5;
+    --grey-text: #5a6476;
+    --gradient-teal: linear-gradient(135deg, #1a2d5e 0%, #1b7f8e 60%, #2aafb4 100%);
+    --gradient-wave: linear-gradient(90deg, #1b7f8e 0%, #4cac74 40%, #f39120 100%);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--navy);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(26, 45, 94, 0.97);
+    backdrop-filter: blur(12px);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+    border-bottom: 2px solid rgba(243,145,32,0.35);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; font-weight: 700;
+    color: var(--white); letter-spacing: 0.01em;
+  }
+  .nav-logo span { color: var(--orange); }
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.82); text-decoration: none;
+    font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em;
+    text-transform: uppercase; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--orange); }
+  .nav-cta {
+    background: var(--orange); color: var(--white) !important;
+    padding: 0.45rem 1.2rem; border-radius: 25px;
+    font-weight: 600 !important;
+  }
+  .nav-cta:hover { background: #e07e10; color: var(--white) !important; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    background: var(--gradient-teal);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 120px 5% 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='600' height='600' viewBox='0 0 600 600' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='300' cy='300' r='250' fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='60'/%3E%3Ccircle cx='300' cy='300' r='150' fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='40'/%3E%3C/svg%3E") center/700px no-repeat;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(243,145,32,0.22);
+    border: 1px solid rgba(243,145,32,0.5);
+    color: #ffc06b;
+    font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.4rem 1.2rem; border-radius: 25px;
+    margin-bottom: 1.6rem;
+    font-weight: 600;
+    animation: fadeDown 0.7s ease both;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    color: var(--white); font-weight: 700;
+    line-height: 1.15; max-width: 780px;
+    animation: fadeDown 0.8s 0.1s ease both;
+  }
+  .hero h1 em { color: var(--orange); font-style: normal; }
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: rgba(255,255,255,0.82); max-width: 620px;
+    margin: 1.4rem auto 0; line-height: 1.7; font-weight: 300;
+    animation: fadeDown 0.8s 0.2s ease both;
+  }
+  .hero-buttons {
+    display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+    margin-top: 2.4rem;
+    animation: fadeDown 0.8s 0.3s ease both;
+  }
+  .btn-primary {
+    background: var(--orange); color: var(--white);
+    padding: 0.85rem 2.2rem; border-radius: 35px;
+    font-weight: 600; font-size: 0.95rem; text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 6px 24px rgba(243,145,32,0.4);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(243,145,32,0.5); }
+  .btn-outline {
+    border: 2px solid rgba(255,255,255,0.55); color: var(--white);
+    padding: 0.85rem 2.2rem; border-radius: 35px;
+    font-weight: 500; font-size: 0.95rem; text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: white; }
+
+  /* wave divider */
+  .wave { display: block; width: 100%; }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 90px 5%; }
+  .section-label {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--teal);
+    display: block; margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    color: var(--navy); font-weight: 700; line-height: 1.2;
+  }
+  .section-title em { color: var(--teal); font-style: normal; }
+  .section-intro {
+    font-size: 1.05rem; color: var(--grey-text);
+    max-width: 640px; margin-top: 0.9rem; line-height: 1.75;
+  }
+
+  /* ─── HOW IT WORKS ─── */
+  #how-it-works { background: var(--off-white); }
+  .steps-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.8rem; margin-top: 3rem;
+  }
+  .step-card {
+    background: var(--white); border-radius: 18px;
+    padding: 2.2rem 2rem;
+    border: 1px solid var(--grey-light);
+    transition: transform 0.25s, box-shadow 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .step-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 4px; background: var(--gradient-wave);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .step-card:hover { transform: translateY(-5px); box-shadow: 0 18px 48px rgba(26,45,94,0.1); }
+  .step-card:hover::after { transform: scaleX(1); }
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem; font-weight: 700;
+    color: var(--teal-pale); line-height: 1;
+    position: absolute; top: 1rem; right: 1.5rem;
+    user-select: none;
+  }
+  .step-icon {
+    width: 52px; height: 52px; border-radius: 14px;
+    background: var(--teal-pale); display: flex;
+    align-items: center; justify-content: center;
+    margin-bottom: 1.2rem;
+  }
+  .step-icon svg { width: 26px; height: 26px; stroke: var(--teal); fill: none; stroke-width: 1.8; }
+  .step-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem; color: var(--navy); margin-bottom: 0.7rem;
+  }
+  .step-card p { font-size: 0.92rem; color: var(--grey-text); line-height: 1.7; }
+  .step-price {
+    display: inline-block; margin-top: 1.1rem;
+    background: var(--orange-light); color: var(--orange);
+    padding: 0.3rem 0.9rem; border-radius: 20px;
+    font-size: 0.82rem; font-weight: 600;
+  }
+
+  /* ─── PRICING ─── */
+  #pricing { background: var(--white); }
+  .pricing-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .price-card {
+    border: 2px solid var(--grey-light); border-radius: 20px;
+    padding: 2rem 1.8rem; text-align: center;
+    transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+  }
+  .price-card:hover { border-color: var(--teal); box-shadow: 0 12px 36px rgba(27,127,142,0.12); transform: translateY(-4px); }
+  .price-card.featured {
+    background: var(--gradient-teal); color: white;
+    border-color: transparent;
+    box-shadow: 0 16px 48px rgba(26,45,94,0.25);
+  }
+  .price-card.featured h3,
+  .price-card.featured .price-amount,
+  .price-card.featured p { color: white; }
+  .price-card.featured .price-label { color: rgba(255,255,255,0.75); }
+  .price-badge {
+    display: inline-block; background: var(--orange);
+    color: white; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 0.25rem 0.8rem; border-radius: 20px; margin-bottom: 1rem;
+  }
+  .price-card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--navy); margin-bottom: 0.4rem; }
+  .price-amount { font-size: 2.4rem; font-weight: 700; color: var(--teal); line-height: 1; }
+  .price-label { font-size: 0.82rem; color: var(--grey-text); margin-bottom: 1rem; }
+  .price-card p { font-size: 0.88rem; color: var(--grey-text); line-height: 1.65; }
+
+  /* ─── ADDONS ─── */
+  #addons { background: var(--off-white); }
+  .addons-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.4rem; margin-top: 3rem;
+  }
+  .addon-card {
+    background: var(--white); border-radius: 16px;
+    padding: 1.6rem 1.5rem;
+    border: 1px solid var(--grey-light);
+    display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .addon-dot {
+    min-width: 12px; height: 12px; border-radius: 50%;
+    background: var(--teal); margin-top: 5px;
+  }
+  .addon-card h4 { font-size: 0.97rem; font-weight: 600; color: var(--navy); margin-bottom: 0.35rem; }
+  .addon-card p { font-size: 0.85rem; color: var(--grey-text); line-height: 1.6; }
+  .addon-price { font-size: 0.83rem; font-weight: 600; color: var(--orange); margin-top: 0.4rem; }
+
+  /* ─── REQUIREMENTS ─── */
+  #requirements { background: var(--white); }
+  .req-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.4rem; margin-top: 3rem;
+  }
+  .req-item {
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 1.4rem; background: var(--teal-pale);
+    border-radius: 14px;
+  }
+  .req-check {
+    min-width: 28px; height: 28px; border-radius: 50%;
+    background: var(--teal); display: flex;
+    align-items: center; justify-content: center; margin-top: 2px;
+  }
+  .req-check svg { width: 14px; height: 14px; stroke: white; fill: none; stroke-width: 2.5; }
+  .req-item h4 { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 0.3rem; }
+  .req-item p { font-size: 0.85rem; color: var(--grey-text); line-height: 1.6; }
+
+  /* ─── MENTORS ─── */
+  #mentors { background: #2a3f6f; color: white; }
+  #mentors .section-label { color: var(--orange); }
+  #mentors .section-title { color: white; }
+  #mentors .section-intro { color: rgba(255,255,255,0.82); }
+  .mentors-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2.5rem; margin-top: 3.5rem;
+  }
+  .mentor-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 22px; padding: 2.5rem 2.2rem;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .mentor-card:hover { background: rgba(255,255,255,0.13); transform: translateY(-4px); }
+  .mentor-avatar {
+    width: 80px; height: 80px; border-radius: 50%;
+    background: var(--gradient-wave);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700; color: white;
+    margin-bottom: 1.4rem;
+    border: 3px solid rgba(255,255,255,0.25);
+  }
+  .mentor-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; color: white; font-weight: 700;
+    margin-bottom: 0.2rem;
+  }
+  .mentor-creds {
+    font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+    color: #ffb84d; text-transform: uppercase; margin-bottom: 1.3rem;
+  }
+  .mentor-bio {
+    font-size: 0.93rem; color: rgba(255,255,255,0.88); line-height: 1.8;
+  }
+  .mentor-bio + .mentor-bio { margin-top: 0.9rem; }
+  .mentor-highlights {
+    margin-top: 1.6rem; display: flex; flex-direction: column; gap: 0.55rem;
+  }
+  .mentor-highlight {
+    display: flex; gap: 0.7rem; align-items: flex-start;
+    font-size: 0.86rem; color: rgba(255,255,255,0.88);
+  }
+  .mentor-highlight::before {
+    content: '◆';
+    color: #ffb84d; font-size: 0.55rem;
+    margin-top: 4px; flex-shrink: 0;
+  }
+
+  /* ─── STEPS / CTA ─── */
+  #get-started {
+    background: var(--gradient-teal);
+    text-align: center; padding: 100px 5%;
+    position: relative; overflow: hidden;
+  }
+  #get-started::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='200' cy='200' r='180' fill='none' stroke='rgba(255,255,255,0.05)' stroke-width='40'/%3E%3C/svg%3E") right -100px top -100px / 500px no-repeat,
+    url("data:image/svg+xml,%3Csvg width='300' height='300' viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='150' cy='150' r='130' fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='30'/%3E%3C/svg%3E") left -80px bottom -80px / 350px no-repeat;
+  }
+  #get-started .section-label { color: rgba(255,255,255,0.7); }
+  #get-started .section-title { color: white; text-align: center; }
+  #get-started .section-intro { color: rgba(255,255,255,0.8); margin: 0.9rem auto 0; text-align: center; }
+
+  .start-date-banner {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: white; padding: 0.7rem 2rem;
+    border-radius: 30px; font-size: 0.93rem;
+    font-weight: 500; margin: 2rem auto 3rem;
+  }
+  .start-date-banner strong { color: var(--orange); }
+
+  .get-started-steps {
+    display: flex; flex-wrap: wrap; gap: 1.5rem;
+    justify-content: center; max-width: 960px; margin: 0 auto;
+  }
+  .gs-step {
+    background: rgba(255,255,255,0.1); border-radius: 18px;
+    padding: 2rem 1.8rem; width: 200px; text-align: center;
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: background 0.25s;
+  }
+  .gs-step:hover { background: rgba(255,255,255,0.17); }
+  .gs-step-num {
+    width: 42px; height: 42px; border-radius: 50%;
+    background: var(--orange); color: white;
+    font-weight: 700; font-size: 1.1rem;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1rem;
+  }
+  .gs-step h4 { font-size: 0.9rem; color: white; font-weight: 600; margin-bottom: 0.5rem; }
+  .gs-step p { font-size: 0.8rem; color: rgba(255,255,255,0.68); line-height: 1.6; }
+
+  .cta-buttons {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    justify-content: center; margin-top: 3rem;
+  }
+  .cta-email {
+    background: var(--white); color: var(--navy);
+    padding: 1rem 2.4rem; border-radius: 35px;
+    font-weight: 600; font-size: 1rem; text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.2);
+  }
+  .cta-email:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(0,0,0,0.25); }
+  .cta-email span { color: var(--teal); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #0f1b3a; color: rgba(255,255,255,0.55);
+    padding: 2.5rem 5%; text-align: center; font-size: 0.85rem;
+  }
+  footer strong { color: rgba(255,255,255,0.8); }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 700px) {
+    .nav-links { display: none; }
+    .mentors-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Auditory <span>Pathways</span></div>
+  <ul class="nav-links">
+    <li><a href="#how-it-works">Programme</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#mentors">Mentors</a></li>
+    <li><a href="#requirements">Requirements</a></li>
+    <li><a href="#get-started" class="nav-cta">Apply Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Train Towards <em>LSLS Certification</em> with Expert Mentors</h1>
+  <p class="hero-sub">A comprehensive online programme for professionals supporting children with hearing loss to develop spoken language through listening.</p>
+  <div class="hero-buttons">
+    <a href="#get-started" class="btn-primary">Book a Free Consultation</a>
+    <a href="#how-it-works" class="btn-outline">Explore the Programme</a>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works">
+  <span class="section-label">The Programme</span>
+  <h2 class="section-title">Three Pillars of <em>Expert Training</em></h2>
+  <p class="section-intro">Our programme combines live peer learning, rich video content, and personalised mentoring — everything you need to build the hours and skills for LSLS certification.</p>
+
+  <div class="steps-grid">
+
+    <div class="step-card">
+      <div class="step-num">01</div>
+      <div class="step-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      </div>
+      <h3>Live Tutorials</h3>
+      <p>Monthly 60-minute live group sessions to share video of your sessions, discuss cases, and receive feedback from peers and an LSLS CertAVT mentor. Groups of 3–4 delegates, meeting 10 times per year (breaks in July &amp; December).</p>
+      <span class="step-price">£23 / month</span>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">02</div>
+      <div class="step-icon">
+        <svg viewBox="0 0 24 24"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <h3>Video Content & Session Observations for C Forms</h3>
+      <p>One monthly pre-recorded training video released in Google Classroom, accompanied by curated readings and resources. 10 sessions per year, covering all domains of the LSLS certification framework.</p>
+      <p style="margin-top:0.8rem; font-size:0.92rem; color:var(--grey-text); line-height:1.7;">Provision of 10 full session observations and discussion for completion of C forms.</p>
+      <span class="step-price">£10 / month</span>
+
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">03</div>
+      <div class="step-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <h3>Individual Mentoring &amp; F-Form Marking</h3>
+      <p>Your key LSLS mentor marks forms, with alternate forms (5, 10, 15, 20) assessed by a second mentor. Each cycle includes a 1-hour live feedback session following video observation, plus relevant resources and readings.</p>
+      <p style="margin-top:0.8rem; font-size:0.92rem; color:var(--grey-text); line-height:1.7;">Mentees may choose a live 2-hour marking session if preferred.</p>
+      <span class="step-price">£160 per F-form</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <span class="section-label">Pricing</span>
+  <h2 class="section-title">Transparent, <em>Flexible Costs</em></h2>
+  <p class="section-intro">Monthly standing orders to keep things manageable. Annual invoices available on request. Your first two months are paid upfront to secure your place.</p>
+
+  <div class="pricing-grid">
+
+    <div class="price-card">
+      <h3>5-Year Track</h3>
+      <div class="price-amount">£87</div>
+      <div class="price-label">per month · 4 F-forms/year</div>
+      <p>Full package with 4 F-form submissions per year — ideal for professionals who prefer a steadier pace.</p>
+    </div>
+
+    <div class="price-card featured">
+      <h3>4-Year Track</h3>
+      <div class="price-amount">£93–100</div>
+      <div class="price-label">per month · 5 F-forms/year</div>
+      <p>Full package including live tutorials, video content, and 5 F-form mentoring submissions per year.</p>
+    </div>
+
+    <div class="price-card">
+      <div class="price-badge">Accelerated Track</div>
+      <h3>3-Year Track</h3>
+      <div class="price-amount">£120–127</div>
+      <div class="price-label">per month · 7 F-forms/year</div>
+      <p>Full package with 7 F-form submissions per year for professionals wanting to move through the programme faster.</p>
+    </div>
+
+  </div>
+
+  <div style="margin-top: 1.5rem;">
+    <div class="price-card" style="border-color: var(--teal); border-width: 2px;">
+      <div class="price-badge" style="background: var(--teal);">Flexible Option</div>
+      <h3>Content &amp; Tutorial Track</h3>
+      <div class="price-amount" style="color: var(--teal);">£50</div>
+      <div class="price-label">per month · video content + live tutorials</div>
+      <p>Designed for professionals who are already working with a local LSLS mentor for their F-form supervision, but who want to enrich their training journey with structured peer learning and expert-curated content. This track gives you access to our monthly pre-recorded training videos, curated readings across all LSLS domains, and the monthly live tutorial group — so you benefit from shared discussion, peer feedback, and a broader learning community without duplicating the mentoring you already receive. An ideal complement to local supervision, keeping you connected, informed, and inspired throughout your certification pathway.</p>
+    </div>
+  </div>
+
+  <p style="margin-top: 2rem; font-size:0.88rem; color: var(--grey-text); max-width: 600px;">
+    Individual components can also be purchased separately: Video content £10/month · F-form marking £160 per form · Live tutorials ~£80/session shared between delegates.
+  </p>
+</section>
+
+<!-- ADDONS -->
+<section id="addons">
+  <span class="section-label">Optional Add-ons</span>
+  <h2 class="section-title">Enhance Your <em>Learning Journey</em></h2>
+  <p class="section-intro">Complement your core programme with additional support tailored to your needs. All add-ons are subject to mentor availability and must be pre-paid.</p>
+
+  <div class="addons-grid">
+    <div class="addon-card">
+      <div class="addon-dot"></div>
+      <div>
+        <h4>Individual Mentoring Session</h4>
+        <p>Discuss tricky cases, review your progress, or explore any topic in depth with your mentor.</p>
+        <div class="addon-price">£80 / hour</div>
+      </div>
+    </div>
+    <div class="addon-card">
+      <div class="addon-dot"></div>
+      <div>
+        <h4>Exam Preparation Webinar</h4>
+        <p>Group webinar with fellow mentees to prepare for the LSLS certification exam — costs shared by attendees.</p>
+        <div class="addon-price">£80 ÷ delegates</div>
+      </div>
+    </div>
+    <div class="addon-card">
+      <div class="addon-dot"></div>
+      <div>
+        <h4>Family Consultancy Session</h4>
+        <p>Your LSLS mentor joins your session by video link for live coaching and consultancy. Allow at least 90 minutes total for briefing and feedback.</p>
+        <div class="addon-price">£80 / hour</div>
+      </div>
+    </div>
+    <div class="addon-card">
+      <div class="addon-dot"></div>
+      <div>
+        <h4>Clinic Visit</h4>
+        <p>Bespoke in-person visit to deliver live teaching, family consultancy, or to discuss service design at your setting.</p>
+        <div class="addon-price">Price on application</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REQUIREMENTS -->
+<section id="requirements">
+  <span class="section-label">Entry Requirements</span>
+  <h2 class="section-title">Is This Programme <em>Right for You?</em></h2>
+  <p class="section-intro">This programme is designed for qualified professionals already working with children with hearing loss who wish to work towards LSLS certification.</p>
+
+  <div class="req-grid">
+    <div class="req-item">
+      <div class="req-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div>
+        <h4>Professional Qualification</h4>
+        <p>A recognised degree in audiology, speech-language pathology, education of the deaf, or another field approved by AG Bell.</p>
+      </div>
+    </div>
+    <div class="req-item">
+      <div class="req-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div>
+        <h4>Current Registration</h4>
+        <p>Active registration or licensure with your relevant professional body (e.g. HCPC, RCSLT, BAA in the UK).</p>
+      </div>
+    </div>
+    <div class="req-item">
+      <div class="req-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div>
+        <h4>Clinical Experience</h4>
+        <p>Demonstrated experience working with children with hearing loss and their families in a clinical or educational setting.</p>
+      </div>
+    </div>
+    <div class="req-item">
+      <div class="req-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div>
+        <h4>Access to Clinical Population</h4>
+        <p>Ongoing access to children with hearing loss and their families to accumulate the required supervised practice hours.</p>
+      </div>
+    </div>
+    <div class="req-item">
+      <div class="req-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div>
+        <h4>Technology Requirements</h4>
+        <p>Reliable internet connection, computer or tablet with camera and microphone, and permission to record families on your caseload.</p>
+      </div>
+    </div>
+    <div class="req-item">
+      <div class="req-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div>
+        <h4>Upfront Payment</h4>
+        <p>First two months' fees are required to secure your place. Thereafter, payments are collected monthly via standing order.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENTORS -->
+<section id="mentors">
+  <span class="section-label">Meet Your Mentors</span>
+  <h2 class="section-title">Expert Guidance from <em>Practising LSLS Specialists</em></h2>
+  <p class="section-intro">Both mentors are actively practising LSLS CertAVTs with deep experience supporting professionals on their certification journey.</p>
+
+  <div class="mentors-grid">
+
+    <!-- ROSIE -->
+    <div class="mentor-card">
+      <div class="mentor-avatar">RQ</div>
+      <div class="mentor-name">Rosie Quayle</div>
+      <div class="mentor-creds">Cert. MRCSLT · PG Dip AVT · LSLS Cert. AVT</div>
+      <p class="mentor-bio">
+        Rosie qualified as a speech and language therapist at University College London before joining the team at Auditory Verbal UK (AVUK) in Oxfordshire in 2007. She completed her Postgraduate Diploma in Auditory Verbal Therapy and qualified as an LSLS Certified Auditory-Verbal Therapist in 2009.
+      </p>
+      <p class="mentor-bio">
+        With over 15 years of certified practice, Rosie has mentored numerous professionals towards LSLS certification and has contributed to the international literature as a chapter author in the acclaimed <em>Auditory Verbal Therapy</em> textbook. She brings a wealth of clinical knowledge, a warm coaching style, and a deep commitment to raising standards in AVT practice across the UK and internationally.
+      </p>
+      <div class="mentor-highlights">
+        <div class="mentor-highlight">LSLS CertAVT since 2009 · 15+ years certified practice</div>
+        <div class="mentor-highlight">Former AVUK clinical team member</div>
+        <div class="mentor-highlight">Published textbook contributor — <em>Auditory Verbal Therapy</em></div>
+        <div class="mentor-highlight">Experienced LSLS mentor for professionals in the UK and abroad</div>
+      </div>
+    </div>
+
+    <!-- ESTELLE -->
+    <div class="mentor-card">
+      <div class="mentor-avatar">EG</div>
+      <div class="mentor-name">Estelle Gerrett</div>
+      <div class="mentor-creds">B.Ed (Hons) · Adv PG Dip HI · LSLS Cert. AVT</div>
+      <p class="mentor-bio">
+        Estelle's career began in Special Needs teaching in the UK. Her specialist focus on hearing loss began under personal circumstances when her baby son contracted Bacterial Meningitis, leaving him profoundly deaf. She returned to university to study a Masters in Hearing Loss, and her career has been founded on that personal journey ever since.
+      </p>
+      <p class="mentor-bio">
+        She later certified as an Auditory Verbal Therapist and over the last 30 years has coached many parents to develop their children's listening, speaking, and social skills — both in New Zealand and in the UK. As Clinical Manager, she also trained professionals towards Auditory Verbal certification in New Zealand, and now continues to train professionals internationally from her base in Portugal.
+      </p>
+      <div class="mentor-highlights">
+        <div class="mentor-highlight">30 years of AVT practice across the UK and New Zealand</div>
+        <div class="mentor-highlight">Masters in Hearing Loss · former Special Needs teacher</div>
+        <div class="mentor-highlight">Clinical Manager with experience training professionals towards AVT certification</div>
+        <div class="mentor-highlight">Now delivering international mentoring from Portugal</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- GET STARTED -->
+<section id="get-started">
+  <span class="section-label">Ready to Begin?</span>
+  <h2 class="section-title" style="text-align:center;">Start Your <em style="color:var(--orange)">Certification Journey</em></h2>
+  <p class="section-intro">Our cohort starts <strong style="color:white">Monday 6th July 2026</strong>. F-form marking is available from <strong style="color:white">Monday 9th May 2026</strong> following prepayment.</p>
+
+  <div class="start-date-banner">
+    📅 Programme starts <strong>6 July 2026</strong> &nbsp;·&nbsp; F-form marking available from <strong>9 May 2026</strong>
+  </div>
+
+  <div class="get-started-steps">
+    <div class="gs-step">
+      <div class="gs-step-num">1</div>
+      <h4>Expression of Interest</h4>
+      <p>Email Rosie or Estelle directly to register your interest.</p>
+    </div>
+    <div class="gs-step">
+      <div class="gs-step-num">2</div>
+      <h4>Free Consultation</h4>
+      <p>20-minute video call to confirm eligibility and agree your payment package.</p>
+    </div>
+    <div class="gs-step">
+      <div class="gs-step-num">3</div>
+      <h4>Enrolment</h4>
+      <p>Complete your enrolment form, pay your first two months, and receive platform access.</p>
+    </div>
+    <div class="gs-step">
+      <div class="gs-step-num">4</div>
+      <h4>Begin Learning</h4>
+      <p>Join your first live tutorial, access video content, and meet your mentor at your first F-form submission.</p>
+    </div>
+  </div>
+
+  <div class="cta-buttons">
+    <a href="mailto:rosie@rosiequayle.co.uk" class="cta-email">✉ Email <span>Rosie</span></a>
+    <a href="mailto:estelle.gerrett@gmail.com" class="cta-email">✉ Email <span>Estelle</span></a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Auditory Pathways · Auditory-Verbal Training</strong></p>
+  <p style="margin-top:0.5rem;">
+    <a href="mailto:rosie@rosiequayle.co.uk" style="color:rgba(255,255,255,0.55); text-decoration:none;">rosie@rosiequayle.co.uk</a>
+    &nbsp;·&nbsp;
+    <a href="mailto:estelle.gerrett@gmail.com" style="color:rgba(255,255,255,0.55); text-decoration:none;">estelle.gerrett@gmail.com</a>
+  </p>
+  <p style="margin-top:1rem; font-size:0.78rem;">LSLS Cert. AVT &amp; AVEd training programme · AG Bell Academy certified mentors · All fees subject to confirmation</p>
+</footer>
+
+</body>
+</html>
